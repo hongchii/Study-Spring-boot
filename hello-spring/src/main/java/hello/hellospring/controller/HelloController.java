@@ -28,7 +28,7 @@ public class HelloController {
     }
 
     //API (json으로 객체반환 뷰없이. ResponseBody에 객체를 담아서 반환해주는 것.)
-    @GetMapping("hello-api") 
+    @GetMapping("hello-api")
     @ResponseBody
     public Hello helloApi(@RequestParam("name") String name){
         Hello hello = new Hello();
