@@ -1,12 +1,14 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,13 +19,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class MemberServiceIntegrationTest {
 
     @Autowired MemberService memberService;
-    @Autowired MemoryMemberRepository memberRepository;
+    @Autowired MemberRepository memberRepository;
 
     @Test
+    @Commit
     void 회원가입() { // 테스트는 직관적으로 볼 수 있게 한글로 해도 됨.
         //given 뭔가 주어지고
         Member member = new Member();
-        member.setName("hello");
+        member.setName("hello1");
         //when 실행했을때
         Long saveId = memberService.join(member);
 
